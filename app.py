@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
+from service import create_app
 
-app = Flask(__name__)
+app = create_app()
 
 accounts = []
 current_id = 1
@@ -47,5 +48,5 @@ def delete_account(account_id):
     accounts = [acc for acc in accounts if acc["id"] != account_id]
     return jsonify({"message": "Deleted"}), 200
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
